@@ -10,19 +10,22 @@
 name: 1、合并20191227 OpenCi最新代码 2、每天凌晨3半点自动合并lean最新代码并编译 3、添加kpr、clash、openclash、smartdns 4、添加两个主题 5、添加多线多拨功能 6、去掉UEFI固件编译
 
 on:
-  push:
-    branches: 
-      - master
+  # push:
+  #   branches: 
+  #     - master
   schedule:
       - cron: 30 19 * * *
   # release:
   #   types: [published]
+  watch:
+    types: [started]
 
 jobs:
 
   merge:
 
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
 
@@ -48,6 +51,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
 
