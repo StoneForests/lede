@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 
-name: 1、合并20191227 OpenCi最新代码 2、每天凌晨3点半自动合并lean最新代码并编译 3、添加kpr、openclash、smartdns 4、添加两个主题 5、添加多线多拨功能 6、去掉UEFI和vmdk固件编译 7、非定时任务中点击star开始编译 8、开启多线程编译
+name: 1、合并20191227 OpenCi最新代码 2、每天凌晨3点半自动合并lean最新代码并编译 3、添加kpr、openclash 4、添加两个主题 5、添加多线多拨功能 6、去掉UEFI和vmdk固件编译 7、非定时任务中点击star开始编译 8、开启多线程编译
 
 on:
   # push:
@@ -88,7 +88,7 @@ jobs:
           git clone https://github.com/Leo-Jo/luci-app-koolproxyR
           git clone https://github.com/rosywrt/luci-theme-rosy.git
           git clone https://github.com/vernesong/OpenClash.git
-          git clone https://github.com/pymumu/smartdns.git
+          # git clone https://github.com/pymumu/smartdns.git
       - name: 升级扩展库包
         run: |
           ./scripts/feeds update -a
@@ -202,7 +202,7 @@ jobs:
           CONFIG_PACKAGE_vim-fuller=y
           CONFIG_PACKAGE_wget=y
           CONFIG_PACKAGE_wget-nossl=y
-          CONFIG_PACKAGE_smartdns=y
+          # CONFIG_PACKAGE_smartdns=y
           EOF
           # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号):
           cat >> .config <<EOF
